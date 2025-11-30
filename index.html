@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOMOLAND RODEO 节奏方块</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MOMOLAND RODEO 节奏方块</h1>
+            <div class="user-info">
+                <span id="userName">玩家</span>
+                <span id="userPoints">积分: 0</span>
+            </div>
+        </header>
+        
+        <main class="game-area">
+            <!-- 开始界面 -->
+            <div class="screen" id="startScreen">
+                <div class="screen-content">
+                    <h2>欢迎来到RODEO节奏游戏</h2>
+                    <div class="members-showcase">
+                        <div class="member-card">
+                            <img src="assets/avatars/1.jpg" alt="慧彬">
+                            <span>慧彬</span>
+                        </div>
+                        <div class="member-card">
+                            <img src="assets/avatars/2.jpg" alt="娜允">
+                            <span>娜允</span>
+                        </div>
+                        <div class="member-card">
+                            <img src="assets/avatars/3.jpg" alt="Jane">
+                            <span>Jane</span>
+                        </div>
+                        <div class="member-card">
+                            <img src="assets/avatars/4.jpg" alt="珠伊">
+                            <span>珠伊</span>
+                        </div>
+                        <div class="member-card">
+                            <img src="assets/avatars/5.jpg" alt="Ahin">
+                            <span>Ahin</span>
+                        </div>
+                        <div class="member-card">
+                            <img src="assets/avatars/6.jpg" alt="Nancy">
+                            <span>Nancy</span>
+                        </div>
+                    </div>
+                    <div class="start-actions">
+                        <button id="startGameBtn" class="btn-primary">开始游戏</button>
+                        <button id="leaderboardBtn" class="btn-secondary">排行榜</button>
+                        <button id="shareBtn" class="btn-secondary">分享</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 游戏界面 -->
+            <div class="screen" id="gameScreen" style="display: none;">
+                <div class="game-header">
+                    <div class="score-board">
+                        <div>得分: <span id="score">100</span></div>
+                        <div>连击: <span id="combo">0</span></div>
+                        <div>时间: <span id="timer">0:00</span></div>
+                    </div>
+                </div>
+                
+                <div class="game-play-area">
+                    <div class="lanes" id="lanes">
+                        <!-- 六条赛道动态生成 -->
+                    </div>
+                    <div class="hit-line"></div>
+                </div>
+                
+                <div class="lyrics-display" id="lyrics">
+                    准备开始...
+                </div>
+                
+                <div class="game-controls">
+                    <button id="pauseBtn" class="btn-small">暂停</button>
+                </div>
+            </div>
+            
+            <!-- 结束界面 -->
+            <div class="screen" id="endScreen" style="display: none;">
+                <div class="screen-content">
+                    <h2>游戏结束</h2>
+                    <div class="result-stats">
+                        <div>最终得分: <span id="finalScore">0</span></div>
+                        <div>最高连击: <span id="maxCombo">0</span></div>
+                        <div>获得积分: <span id="earnedPoints">0</span></div>
+                    </div>
+                    <div class="end-actions">
+                        <button id="playAgainBtn" class="btn-primary">再玩一次</button>
+                        <button id="backToMenuBtn" class="btn-secondary">返回主菜单</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 排行榜界面 -->
+            <div class="screen" id="leaderboardScreen" style="display: none;">
+                <div class="screen-content">
+                    <h2>排行榜</h2>
+                    <div class="leaderboard-tabs">
+                        <button class="tab-btn active" data-tab="daily">日榜</button>
+                        <button class="tab-btn" data-tab="weekly">周榜</button>
+                        <button class="tab-btn" data-tab="monthly">月榜</button>
+                    </div>
+                    <div class="leaderboard-content">
+                        <div id="leaderboardList">
+                            <!-- 排行榜内容动态生成 -->
+                        </div>
+                    </div>
+                    <button id="backFromLeaderboardBtn" class="btn-secondary">返回</button>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>© 2025 MOMOLAND中国RODEO-牛马歌游戏</p>
+        </footer>
+    </div>
+
+    <!-- 分享模态框 -->
+    <div id="shareModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>分享游戏</h3>
+            <p>分享给好友，双方均可获得积分奖励！</p>
+            <div class="share-options">
+                <button class="share-option" data-platform="wechat">微信</button>
+                <button class="share-option" data-platform="douyin">抖音</button>
+                <button class="share-option" data-platform="xiaohongshu">小红书</button>
+            </div>
+            <div class="share-link">
+                <input type="text" id="shareUrl" readonly>
+                <button id="copyLinkBtn">复制链接</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 音频元素 -->
+    <audio id="gameAudio" preload="auto">
+        <source src="assets/rodeo.mp3" type="audio/mp3">
+        您的浏览器不支持音频元素。
+    </audio>
+
+    <script src="game.js"></script>
+</body>
+</html>
